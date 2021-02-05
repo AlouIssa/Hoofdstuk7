@@ -84,7 +84,7 @@ class FiliaalRepositoryTest extends AbstractTransactionalJUnit4SpringContextTest
         assertThat(repository.findByGemeente("Antwerpen"))
                 .extracting(Filiaal::getGemeente).doesNotContain("Brussel");
         assertThat(repository.findByGemeente("Brussel")).hasSize(2)
-                .allSatisfy(filiaal -> assertThat(filiaal.getNaam()).isEqualTo("Brussel"));
+                .allSatisfy(filiaal -> assertThat(filiaal.getGemeente()).isEqualTo("Brussel"));
 //                .extracting(Filiaal::getGemeente).containsOnly("Brussel");
     }
     @Test
