@@ -66,12 +66,13 @@ class FiliaalRepositoryTest extends AbstractTransactionalJUnit4SpringContextTest
     void deleteById(){
         assertThat(repository.findAll()).hasSize(3);
         assertThat(countRowsInTable(FILIALEN)).isEqualTo(3);
+        assertThat(repository.findById(idVanAlfa())).isPresent();
         repository.deleteById(idVanAlfa());
         repository.flush();  // staat in cursus maar werkt ook zonder
         assertThat(repository.findAll()).hasSize(2);
         assertThat(countRowsInTable(FILIALEN)).isEqualTo(2);
-//        assertThat(repository.findById(idVanAlfa())).isNotPresent();    // deze wilt niet lukken
-//        assertThat(countRowsInTableWhere(FILIALEN, "id="+idVanAlfa())).isZero();   // deze wilt niet lukken
+//        assertThat(repository.findById(idVanAlfa())).isNotPresent();    // deze wil niet lukken
+//        assertThat(countRowsInTableWhere(FILIALEN, "id="+idVanAlfa())).isZero();   // deze wil niet lukken
     }
     @Test
     void deleteByOnbestaandeId(){
